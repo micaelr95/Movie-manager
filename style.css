@@ -1,8 +1,4 @@
-.nav ul{
-    border:1px solid #ccc;
-    border-width:1px 0;
-    list-style:none;
-    margin:0;
-    padding:0;
-    text-align:center;
+#test{
+	width: 50%;
+    margin: 0 auto;
 }
