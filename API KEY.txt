@@ -6,3 +6,4 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZmM5YjQ3OTQyY2ZmMzNjMjI1NWY0M2R
 
 Example API Request
 https://api.themoviedb.org/3/movie/550?api_key=cfc9b47942cff33c2255f43dd9fb87f0
+https://api.themoviedb.org/3/search/movie?api_key=cfc9b47942cff33c2255f43dd9fb87f0&language=en-US&query=tron&page=1&include_adult=false
