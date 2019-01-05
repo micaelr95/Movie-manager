@@ -4,24 +4,22 @@ const API_POPULAR_URL = API_BASE_URL + 'movie/popular?api_key=' + API_KEY;
 const API_SEARCH_URL = API_BASE_URL + 'search/movie?api_key=' + API_KEY + '&language=en-US&page=1&include_adult=false&query=';
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2'
 
-let cloneMedia = $('.media').clone();
+let cardClone = $('.card').clone();
 
 function media(msg) {
     msg.results.forEach(function (result) {
-        let liMedia = cloneMedia.clone();
+        let card = cardClone.clone();
 
-        $('.media-object', liMedia).attr('src', IMAGE_URL + result.poster_path);
-        $('.media-heading',liMedia).text(result.title);
-        $('.ano', liMedia).text(result.release_date);
-        $('.tipo', liMedia).text(result.overview);
-        $('.media-list').append(liMedia);
+        $('#poster', card).attr('src', IMAGE_URL + result.poster_path);
+        $('#title',card).text(result.title);
+        $('#release-date', card).text(result.release_date);
+        $('.row').append(card);
     });
 }
 
 $(function () {
-    $('.media-list').html('');
+    $('.row').html('');
 
-    console.log(API_POPULAR_URL);
     $.ajax({
         method: 'GET',
         url: API_POPULAR_URL
@@ -31,7 +29,7 @@ $(function () {
 $('#btnSearch').click(function () {
     let search = $('#search').val();
     
-    $('.media-list').html('');
+    $('.row').html('');
 
     $.ajax({
         method: 'GET',

@@ -1,4 +1,43 @@
-#test{
+html body {
+    background-color: #1d1f21;
+}
+
+#test {
 	width: 50%;
     margin: 0 auto;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.card {
+    width: 185px;
+    height: 380px;
+    background-color: #272a2c;
+    border: 5px solid #1d1f21;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card:hover {
+    background-color: #373b41;
+}
+
+#image {
+    width: 185px;
+    height: 278px;
+}
+
+#title {
+    font-size: 14px;
+    word-wrap: break-word;
+    color: #c5c8c6;
+}
+
+#release-date {
+    font-size: 12px;
+    color: #c5c8c6;
 }
