@@ -13,7 +13,7 @@ html body {
 
 .card {
     width: 185px;
-    height: 380px;
+    height: 360px;
     background-color: #272a2c;
     border: 5px solid #1d1f21;
 }
@@ -24,6 +24,10 @@ html body {
 
 .card:hover {
     background-color: #373b41;
+}
+
+.card-body {
+    padding: 5px;
 }
 
 #image {
@@ -40,4 +44,6 @@ html body {
 #release-date {
     font-size: 12px;
     color: #c5c8c6;
+    position: absolute;
+    bottom: 10px;
 }
