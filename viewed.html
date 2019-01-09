@@ -10,11 +10,32 @@
 </head>
 <body>
     <main>
-    <nav>
-        <a href="Filme.html">Filme</a>
-        <a href="Index.html">Home</a>
-        <a href="Wishlist.html">Whishlist</a>
-    </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+              </ul>
+              <form class="form-inline my-2 my-lg-0" id="test">
+                <input id="search" class="form-control col-8" tysape="search" placeholder="Search" aria-label="Search">
+                <button id="btnSearch" type="submit"><i class='fas fa-search'></i></button>
+              </form>
+            </div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="viewed.html">Viewed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="watching.html">Watching</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="wishlist.html">Whishlist</a>
+              </li>
+              </ul>
+          </nav>
     </main>
 </body>
 </html>
