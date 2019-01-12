@@ -1,13 +1,13 @@
-const API_KEY = 'cfc9b47942cff33c2255f43dd9fb87f0';
+const API_KEY = '?api_key=cfc9b47942cff33c2255f43dd9fb87f0';
 const API_BASE_URL = 'https://api.themoviedb.org/3/';
-const API_POPULAR_URL = API_BASE_URL + 'movie/popular?api_key=' + API_KEY;
-const API_SEARCH_URL = API_BASE_URL + 'search/movie?api_key=' + API_KEY + '&language=en-US&page=1&include_adult=false&query=';
+const API_POPULAR_URL = API_BASE_URL + 'movie/popular' + API_KEY;
+const API_SEARCH_URL = API_BASE_URL + 'search/movie' + API_KEY + '&language=en-US&page=1&include_adult=false&query=';
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2'
 const DETAILS_PAGE = 'details.html?id='
 
 let cardClone = $('.card').clone();
 
-function media(msg) {
+function index_media(msg) {
     msg.results.forEach(function (result) {
         let card = cardClone.clone();
 
@@ -19,21 +19,28 @@ function media(msg) {
     });
 }
 
+function details_media(result) {
+    $('#poster').attr('src', IMAGE_URL + result.poster_path);
+    $('#title').text(result.title);
+    $('#release-date').text(result.release_date);
+}
+
 $(function () {
-    $('.row').html('');
-
-    let link = $(location).attr("href").split("?").slice(-1).toString();
-    let movie_id = parseInt(link.substr(3, link.length));
-
-    console.log(movie_id);
-    if(movie_id.isInteger())
-    {
-
-    } else {
+    let link = $(location).attr("href").split("/").slice(-1).toString();
+    
+    if(link == "index.html") {
+        $('.row').html('');
         $.ajax({
             method: 'GET',
             url: API_POPULAR_URL
-        }).done(media);
+        }).done(index_media);
+    } else {
+        let id = link.split("=").slice(-1).toString();
+        $.ajax({
+            method: 'GET',
+            url: API_BASE_URL + 'movie/' + id + API_KEY
+        }).done(details_media);
+        console.log(id);
     }
 });
 
@@ -45,7 +52,7 @@ $('#btnSearch').click(function () {
     $.ajax({
         method: 'GET',
         url: API_SEARCH_URL + search
-    }).done(media);
+    }).done(index_media);
 
     return false;
 });
