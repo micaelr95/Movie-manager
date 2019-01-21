@@ -47,3 +47,9 @@ html body {
     position: absolute;
     bottom: 10px;
 }
+.navbar-light .navbar-nav .nav-link {
+    color:white;
+}
+.navbar-light .navbar-brand {
+    color: white;
+}
