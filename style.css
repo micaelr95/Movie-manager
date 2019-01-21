@@ -2,7 +2,7 @@ html body {
     background-color: #1d1f21;
 }
 
-#test {
+#searchBar {
 	width: 50%;
     margin: 0 auto;
 }
@@ -30,18 +30,18 @@ html body {
     padding: 5px;
 }
 
-#image {
+.card #image {
     width: 185px;
     height: 278px;
 }
 
-#title {
+.card #title {
     font-size: 14px;
     word-wrap: break-word;
     color: #c5c8c6;
 }
 
-#release-date {
+.card #release-date {
     font-size: 12px;
     color: #c5c8c6;
     position: absolute;
@@ -52,4 +52,17 @@ html body {
 }
 .navbar-light .navbar-brand {
     color: white;
+}
+
+.info-box {
+    width: 50%;
+    color: #c5c8c6;
+}
+
+.details #title {
+    font-size: 30px;
+}
+
+.details #movie-details {
+    float: right;
 }

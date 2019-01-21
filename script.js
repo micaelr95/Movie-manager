@@ -23,6 +23,7 @@ function details_media(result) {
     $('#poster').attr('src', IMAGE_URL + result.poster_path);
     $('#title').text(result.title);
     $('#release-date').text(result.release_date);
+    $("#movie-details").text(result.overview);
 }
 
 $(function () {
