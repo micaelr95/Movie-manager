@@ -70,14 +70,19 @@ html body {
 }
 
 .info-box {
-    width: 50%;
+    float: left;
     color: #c5c8c6;
 }
 
-.details #title {
+.info-box #title {
     font-size: 30px;
 }
 
-.details #movie-details {
+.details-box {
+    padding-left: 50px;
+    color: #c5c8c6;
+}
+
+.details-box #buttons {
     float: right;
 }

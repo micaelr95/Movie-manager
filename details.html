@@ -43,15 +43,21 @@
     </nav>
     <div class="container">
       <div class="row">
-        <div class="info-box">
+        <div class="col-md-4 col-lg-2 info-box">
           <img class="" id="poster" src="" alt="">
-            <h5 class="" id="title"></h5>
-            <p class="" id="release-date"></p>
+          <h5 class="" id="title"></h5>
+          <p class="" id="release-date"></p>
+        </div>
+        <div class="col-md-8 col-lg-10 details-box">
+          <p>Overview:</p>
+          <p id="movie-details"></p>
+          <div id="buttons">
+            <button type="button" class="btn btn-dark">Viewed</button>
+            <button type="button" class="btn btn-dark">Watching</button>
+            <button type="button" class="btn btn-dark">Wishlist</button>
           </div>
         </div>
-        <div class="details-box">
-          <p id="movie-details"></p>
-        </div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
