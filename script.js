@@ -15,8 +15,22 @@ function index_media(msg) {
         $('#poster', card).attr('src', IMAGE_URL + result.poster_path);
         $('#title',card).text(result.title);
         $('#release-date', card).text(result.release_date);
+        console.log(card);
         $('.row').append(card);
     });
+}
+
+function lists_media(result) {
+    let card = cardClone.clone();
+
+    $('#nav', card).attr('href', DETAILS_PAGE + result.id);
+    console.log(DETAILS_PAGE + result.id);
+    $('#poster', card).attr('src', IMAGE_URL + result.poster_path);
+    console.log(IMAGE_URL + result.poster_path);
+    $('#title',card).text(result.title);
+    $('#release-date', card).text(result.release_date);
+    console.log(card);
+    $('.row').append(card);
 }
 
 function details_media(result) {
@@ -35,6 +49,15 @@ $(function () {
             method: 'GET',
             url: API_POPULAR_URL
         }).done(index_media);
+    } else if(link == "wishlist.html") {
+        $('.row').html('');
+        let wishlist = JSON.parse(localStorage.getItem('wishlist'));
+        wishlist.forEach(function (id) {
+            $.ajax({
+                method: 'GET',
+                url: API_BASE_URL + 'movie/' + id + API_KEY
+            }).done(lists_media);
+        });
     } else {
         let id = link.split("=").slice(-1).toString();
         $.ajax({
@@ -61,13 +84,13 @@ function addWishlist() {
     let link = $(location).attr("href").split("/").slice(-1).toString();
     let id = link.split("=").slice(-1).toString();
     if(typeof(localStorage) !== 'undefined'){
-        if(localStorage.getItem('Wishlist')) {
-            var arr = JSON.parse(localStorage.getItem('Wishlist'));
+        if(localStorage.getItem('wishlist')) {
+            var arr = JSON.parse(localStorage.getItem('wishlist'));
         } else {
             var arr = [];
         }
         arr.push(id);
-        localStorage.setItem('Wishlist', JSON.stringify(arr));
+        localStorage.setItem('wishlist', JSON.stringify(arr));
     } else {
         console.log('LocalStorage not suported');
     }
