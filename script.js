@@ -95,3 +95,33 @@ function addWishlist() {
         console.log('LocalStorage not suported');
     }
 }
+function addViewed() {
+    let link = $(location).attr("href").split("/").slice(-1).toString();
+    let id = link.split("=").slice(-1).toString();
+    if(typeof(localStorage) !== 'undefined'){
+        if(localStorage.getItem('viewed')) {
+            var arr = JSON.parse(localStorage.getItem('viewed'));
+        } else {
+            var arr = [];
+        }
+        arr.push(id);
+        localStorage.setItem('viewed', JSON.stringify(arr));
+    } else {
+        console.log('LocalStorage not suported');
+    }
+}
+function addWatching() {
+    let link = $(location).attr("href").split("/").slice(-1).toString();
+    let id = link.split("=").slice(-1).toString();
+    if(typeof(localStorage) !== 'undefined'){
+        if(localStorage.getItem('watching')) {
+            var arr = JSON.parse(localStorage.getItem('watching'));
+        } else {
+            var arr = [];
+        }
+        arr.push(id);
+        localStorage.setItem('watching', JSON.stringify(arr));
+    } else {
+        console.log('LocalStorage not suported');
+    }
+}
