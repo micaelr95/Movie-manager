@@ -41,7 +41,6 @@ $(function () {
             method: 'GET',
             url: API_BASE_URL + 'movie/' + id + API_KEY
         }).done(details_media);
-        console.log(id);
     }
 });
 
@@ -57,3 +56,19 @@ $('#btnSearch').click(function () {
 
     return false;
 });
+
+function addWishlist() {
+    let link = $(location).attr("href").split("/").slice(-1).toString();
+    let id = link.split("=").slice(-1).toString();
+    if(typeof(localStorage) !== 'undefined'){
+        if(localStorage.getItem('Wishlist')) {
+            var arr = JSON.parse(localStorage.getItem('Wishlist'));
+        } else {
+            var arr = [];
+        }
+        arr.push(id);
+        localStorage.setItem('Wishlist', JSON.stringify(arr));
+    } else {
+        console.log('LocalStorage not suported');
+    }
+}
