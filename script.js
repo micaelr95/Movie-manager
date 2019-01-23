@@ -58,6 +58,15 @@ $(function () {
                 url: API_BASE_URL + 'movie/' + id + API_KEY
             }).done(lists_media);
         });
+    } else if(link == "viewed.html") {
+        $('.row').html('');
+        let viewed = JSON.parse(localStorage.getItem('viewed'));
+        viewed.forEach(function (id) {
+            $.ajax({
+                method: 'GET',
+                url: API_BASE_URL + 'movie/' + id + API_KEY
+            }).done(lists_media);
+        });
     } else {
         let id = link.split("=").slice(-1).toString();
         $.ajax({
