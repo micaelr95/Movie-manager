@@ -67,6 +67,15 @@ $(function () {
                 url: API_BASE_URL + 'movie/' + id + API_KEY
             }).done(lists_media);
         });
+    } else if(link == "watching.html") {
+        $('.row').html('');
+        let watching = JSON.parse(localStorage.getItem('watching'));
+        watching.forEach(function (id) {
+            $.ajax({
+                method: 'GET',
+                url: API_BASE_URL + 'movie/' + id + API_KEY
+            }).done(lists_media);
+        });
     } else {
         let id = link.split("=").slice(-1).toString();
         $.ajax({
