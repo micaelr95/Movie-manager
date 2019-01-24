@@ -19,7 +19,11 @@ html body {
 #searchBar button:hover {
     background-color: #16181a;
     margin-left: 5px;
-} 
+}
+
+#page-info {
+    color: #c5c8c6;
+}
 
 .container {
     margin-top: 20px;

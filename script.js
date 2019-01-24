@@ -107,7 +107,7 @@ $(function () {
 $('#btnSearch').click(function () {
     let search = $('#search').val();
     $('.row').html('');
-
+    $('#page-info').text('Search results for ' + search);
     $.ajax({
         method: 'GET',
         url: API_SEARCH_URL + search
