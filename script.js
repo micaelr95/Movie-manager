@@ -71,7 +71,7 @@ $(function () {
             }).done(lists_media);
         });
     } else if(link == "viewed.html") {
-        
+        $('.row').html('');
         let viewed = JSON.parse(localStorage.getItem('viewed'));
         viewed.forEach(function (id) {
             $.ajax({

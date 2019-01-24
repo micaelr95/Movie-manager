@@ -1,5 +1,6 @@
 html body {
     background-color: #1d1f21;
+    color: #c5c8c6;
 }
 
 #searchBar {
@@ -19,10 +20,6 @@ html body {
 #searchBar button:hover {
     background-color: #16181a;
     margin-left: 5px;
-}
-
-#page-info {
-    color: #c5c8c6;
 }
 
 .container {
@@ -74,23 +71,9 @@ html body {
 
 .info-box {
     float: left;
-    color: #c5c8c6;
 }
 
 .info-box #title {
     font-size: 30px;
-}
-
-.details-box {
-    margin-left: 50px;
-    color: #c5c8c6;
-}
-
-#similar {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    word-wrap: break-word;
 }
