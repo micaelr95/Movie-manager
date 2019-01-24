@@ -38,13 +38,17 @@ function details_media(result) {
     $("#movie-details").text(result.overview);
 }
 
+function getPageName() {
+    return $(location).attr("href").split("/").slice(-1).toString();
+}
+
 function getMovieID() {
-    let link = $(location).attr("href").split("/").slice(-1).toString();
+    let link = getPageName();
     return link.split("=").slice(-1).toString();
 }
 
 $(function () {
-    let link = $(location).attr("href").split("/").slice(-1).toString();
+    let link = getPageName();
     
     if(link == "index.html") {
         $('.row').html('');
@@ -80,10 +84,9 @@ $(function () {
             }).done(lists_media);
         });
     } else {
-        let id = link.split("=").slice(-1).toString();
         $.ajax({
             method: 'GET',
-            url: API_BASE_URL + 'movie/' + id + API_KEY
+            url: API_BASE_URL + 'movie/' + getMovieID() + API_KEY
         }).done(details_media);
         if(typeof(localStorage) !== 'undefined'){
             if(localStorage.getItem('wishlist')) {
@@ -103,7 +106,6 @@ $(function () {
 
 $('#btnSearch').click(function () {
     let search = $('#search').val();
-    
     $('.row').html('');
 
     $.ajax({
@@ -115,8 +117,6 @@ $('#btnSearch').click(function () {
 });
 
 function addWishlist() {
-    let link = $(location).attr("href").split("/").slice(-1).toString();
-    let id = link.split("=").slice(-1).toString();
     if(typeof(localStorage) !== 'undefined'){
         if(localStorage.getItem('wishlist')) {
             var arr = JSON.parse(localStorage.getItem('wishlist'));
@@ -129,11 +129,11 @@ function addWishlist() {
         {
             $("#btn_wishlist").removeClass('btn-dark');
             $("#btn_wishlist").addClass('btn-success');
-            arr.push(id);
+            arr.push(getMovieID());
         } else {
             $("#btn_wishlist").removeClass('btn-success');
             $("#btn_wishlist").addClass('btn-dark');
-            arr.pop(id);
+            arr.pop(getMovieID());
         }
         localStorage.setItem('wishlist', JSON.stringify(arr));
     } else {
@@ -141,30 +141,26 @@ function addWishlist() {
     }
 }
 function addViewed() {
-    let link = $(location).attr("href").split("/").slice(-1).toString();
-    let id = link.split("=").slice(-1).toString();
     if(typeof(localStorage) !== 'undefined'){
         if(localStorage.getItem('viewed')) {
             var arr = JSON.parse(localStorage.getItem('viewed'));
         } else {
             var arr = [];
         }
-        arr.push(id);
+        arr.push(getMovieID());
         localStorage.setItem('viewed', JSON.stringify(arr));
     } else {
         console.log('LocalStorage not suported');
     }
 }
 function addWatching() {
-    let link = $(location).attr("href").split("/").slice(-1).toString();
-    let id = link.split("=").slice(-1).toString();
     if(typeof(localStorage) !== 'undefined'){
         if(localStorage.getItem('watching')) {
             var arr = JSON.parse(localStorage.getItem('watching'));
         } else {
             var arr = [];
         }
-        arr.push(id);
+        arr.push(getMovieID());
         localStorage.setItem('watching', JSON.stringify(arr));
     } else {
         console.log('LocalStorage not suported');
