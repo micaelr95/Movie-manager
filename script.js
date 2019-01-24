@@ -8,6 +8,7 @@ const DETAILS_PAGE = 'details.html?id='
 let cardClone = $('.card').clone();
 
 function index_media(msg) {
+    $('.row').html('');
     msg.results.forEach(function (result) {
         let card = cardClone.clone();
 
@@ -16,19 +17,6 @@ function index_media(msg) {
         $('#title',card).text(result.title);
         $('#release-date', card).text(result.release_date);
         $('.row').append(card);
-    });
-}
-
-function similar_media(msg) {
-    $('#similar').html('');
-    msg.results.forEach(function (result) {
-        let card = cardClone.clone();
-
-        $('#nav', card).attr('href', DETAILS_PAGE + result.id)
-        $('#poster', card).attr('src', IMAGE_URL + result.poster_path);
-        $('#title',card).text(result.title);
-        $('#release-date', card).text(result.release_date);
-        $('#similar').append(card);
     });
 }
 
@@ -68,7 +56,7 @@ $(function () {
     let link = getPageName();
     
     if(link == "index.html") {
-        $('.row').html('');
+        
         $.ajax({
             method: 'GET',
             url: API_POPULAR_URL
@@ -83,7 +71,7 @@ $(function () {
             }).done(lists_media);
         });
     } else if(link == "viewed.html") {
-        $('.row').html('');
+        
         let viewed = JSON.parse(localStorage.getItem('viewed'));
         viewed.forEach(function (id) {
             $.ajax({
@@ -139,7 +127,7 @@ $(function () {
         $.ajax({
             method: 'GET',
             url: API_BASE_URL + 'movie/' + getMovieID() + '/similar' + API_KEY
-        }).done(similar_media);
+        }).done(index_media);
     }
 });
 
