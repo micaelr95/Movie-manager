@@ -100,7 +100,7 @@ $(function () {
                 if(exists >= 0)
                 {
                     $("#btn_wishlist").removeClass('btn-dark');
-                    $("#btn_wishlist").addClass('btn-success');
+                    $("#btn_wishlist").addClass('btn-primary');
                 }
             }
             if(localStorage.getItem('viewed')) {
@@ -109,7 +109,7 @@ $(function () {
                 if(exists >= 0)
                 {
                     $("#btn_viewed").removeClass('btn-dark');
-                    $("#btn_viewed").addClass('btn-success');
+                    $("#btn_viewed").addClass('btn-primary');
                 }
             }
             if(localStorage.getItem('watching')) {
@@ -118,7 +118,7 @@ $(function () {
                 if(exists >= 0)
                 {
                     $("#btn_watching").removeClass('btn-dark');
-                    $("#btn_watching").addClass('btn-success');
+                    $("#btn_watching").addClass('btn-primary');
                 }
             }
         } else {
@@ -154,10 +154,10 @@ function addWishlist() {
         if(exists < 0)
         {
             $("#btn_wishlist").removeClass('btn-dark');
-            $("#btn_wishlist").addClass('btn-success');
+            $("#btn_wishlist").addClass('btn-primary');
             arr.push(getMovieID());
         } else {
-            $("#btn_wishlist").removeClass('btn-success');
+            $("#btn_wishlist").removeClass('btn-primary');
             $("#btn_wishlist").addClass('btn-dark');
             arr.pop(getMovieID());
         }
@@ -178,10 +178,10 @@ function addViewed() {
         if(exists < 0)
         {
             $("#btn_viewed").removeClass('btn-dark');
-            $("#btn_viewed").addClass('btn-success');
+            $("#btn_viewed").addClass('btn-primary');
             arr.push(getMovieID());
         } else {
-            $("#btn_viewed").removeClass('btn-success');
+            $("#btn_viewed").removeClass('btn-primary');
             $("#btn_viewed").addClass('btn-dark');
             arr.pop(getMovieID());
         }
@@ -202,10 +202,10 @@ function addWatching() {
         if(exists < 0)
         {
             $("#btn_watching").removeClass('btn-dark');
-            $("#btn_watching").addClass('btn-success');
+            $("#btn_watching").addClass('btn-primary');
             arr.push(getMovieID());
         } else {
-            $("#btn_watching").removeClass('btn-success');
+            $("#btn_watching").removeClass('btn-primary');
             $("#btn_watching").addClass('btn-dark');
             arr.pop(getMovieID());
         }
