@@ -123,7 +123,18 @@ function addWishlist() {
         } else {
             var arr = [];
         }
-        arr.push(id);
+        let exists = arr.indexOf(getMovieID());
+        console.log(exists);
+        if(exists < 0)
+        {
+            $("#btn_wishlist").removeClass('btn-dark');
+            $("#btn_wishlist").addClass('btn-success');
+            arr.push(id);
+        } else {
+            $("#btn_wishlist").removeClass('btn-success');
+            $("#btn_wishlist").addClass('btn-dark');
+            arr.pop(id);
+        }
         localStorage.setItem('wishlist', JSON.stringify(arr));
     } else {
         console.log('LocalStorage not suported');
