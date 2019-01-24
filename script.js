@@ -15,7 +15,6 @@ function index_media(msg) {
         $('#poster', card).attr('src', IMAGE_URL + result.poster_path);
         $('#title',card).text(result.title);
         $('#release-date', card).text(result.release_date);
-        console.log(card);
         $('.row').append(card);
     });
 }
@@ -29,7 +28,6 @@ function lists_media(result) {
     console.log(IMAGE_URL + result.poster_path);
     $('#title',card).text(result.title);
     $('#release-date', card).text(result.release_date);
-    console.log(card);
     $('.row').append(card);
 }
 
@@ -38,6 +36,11 @@ function details_media(result) {
     $('#title').text(result.title);
     $('#release-date').text(result.release_date);
     $("#movie-details").text(result.overview);
+}
+
+function getMovieID() {
+    let link = $(location).attr("href").split("/").slice(-1).toString();
+    return link.split("=").slice(-1).toString();
 }
 
 $(function () {
@@ -82,6 +85,19 @@ $(function () {
             method: 'GET',
             url: API_BASE_URL + 'movie/' + id + API_KEY
         }).done(details_media);
+        if(typeof(localStorage) !== 'undefined'){
+            if(localStorage.getItem('wishlist')) {
+                var arr = JSON.parse(localStorage.getItem('wishlist'));
+                let exists = arr.indexOf(getMovieID());
+                if(exists >= 0)
+                {
+                    $("#btn_wishlist").removeClass('btn-dark');
+                    $("#btn_wishlist").addClass('btn-success');
+                }
+            }
+        } else {
+            console.log('LocalStorage not suported');
+        }
     }
 });
 
