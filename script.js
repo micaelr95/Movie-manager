@@ -36,6 +36,10 @@ function details_media(result) {
     $('#title').text(result.title);
     $('#release-date').text(result.release_date);
     $("#movie-details").text(result.overview);
+    $('#vote_average').text(result.vote_average + '/10');
+    result.genres.forEach(element => {
+        $('<p>').text(element.name).appendTo('#genres');
+    });
 }
 
 function getPageName() {
