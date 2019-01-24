@@ -19,6 +19,19 @@ function index_media(msg) {
     });
 }
 
+function similar_media(msg) {
+    $('#similar').html('');
+    msg.results.forEach(function (result) {
+        let card = cardClone.clone();
+
+        $('#nav', card).attr('href', DETAILS_PAGE + result.id)
+        $('#poster', card).attr('src', IMAGE_URL + result.poster_path);
+        $('#title',card).text(result.title);
+        $('#release-date', card).text(result.release_date);
+        $('#similar').append(card);
+    });
+}
+
 function lists_media(result) {
     let card = cardClone.clone();
 
@@ -123,6 +136,10 @@ $(function () {
         } else {
             console.log('LocalStorage not suported');
         }
+        $.ajax({
+            method: 'GET',
+            url: API_BASE_URL + 'movie/' + getMovieID() + '/similar' + API_KEY
+        }).done(similar_media);
     }
 });
 

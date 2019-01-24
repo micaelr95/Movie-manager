@@ -85,3 +85,12 @@ html body {
     padding-left: 50px;
     color: #c5c8c6;
 }
+
+#similar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
