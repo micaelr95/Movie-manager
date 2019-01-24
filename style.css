@@ -86,3 +86,10 @@ html body {
     font-size: 30px;
     word-wrap: break-word;
 }
+
+@media (max-width: 768px) {
+    .row {
+        -ms-flex-pack: center!important;
+        justify-content: center!important;
+    }
+}
