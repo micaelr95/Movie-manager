@@ -64,30 +64,43 @@ $(function () {
     } else if(link == "wishlist.html") {
         $('.row').html('');
         let wishlist = JSON.parse(localStorage.getItem('wishlist'));
-        wishlist.forEach(function (id) {
-            $.ajax({
-                method: 'GET',
-                url: API_BASE_URL + 'movie/' + id + API_KEY
-            }).done(lists_media);
-        });
+        console.log();
+        if(wishlist.length>0){
+            wishlist.forEach(function (id) {
+                $.ajax({
+                    method: 'GET',
+                    url: API_BASE_URL + 'movie/' + id + API_KEY
+                }).done(lists_media);
+            });
+        } else {
+            $('<p>').text('No movies in wishlist.').appendTo('.container');
+        }
     } else if(link == "viewed.html") {
         $('.row').html('');
         let viewed = JSON.parse(localStorage.getItem('viewed'));
-        viewed.forEach(function (id) {
-            $.ajax({
-                method: 'GET',
-                url: API_BASE_URL + 'movie/' + id + API_KEY
-            }).done(lists_media);
-        });
+        if(viewed.length>0){
+            viewed.forEach(function (id) {
+                $.ajax({
+                    method: 'GET',
+                    url: API_BASE_URL + 'movie/' + id + API_KEY
+                }).done(lists_media);
+            });
+        } else {
+            $('<p>').text('No movies in viewed.').appendTo('.container');
+        }
     } else if(link == "watching.html") {
         $('.row').html('');
         let watching = JSON.parse(localStorage.getItem('watching'));
-        watching.forEach(function (id) {
-            $.ajax({
-                method: 'GET',
-                url: API_BASE_URL + 'movie/' + id + API_KEY
-            }).done(lists_media);
-        });
+        if(watching.length>0){
+            watching.forEach(function (id) {
+                $.ajax({
+                    method: 'GET',
+                    url: API_BASE_URL + 'movie/' + id + API_KEY
+                }).done(lists_media);
+            });
+        } else {
+            $('<p>').text('No movies in watching.').appendTo('.container');
+        }
     } else {
         $.ajax({
             method: 'GET',
