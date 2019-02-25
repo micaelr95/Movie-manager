@@ -55,13 +55,7 @@ function getMovieID() {
 $(function () {
     let link = getPageName();
     
-    if(link == "index.html") {
-        
-        $.ajax({
-            method: 'GET',
-            url: API_POPULAR_URL
-        }).done(index_media);
-    } else if(link == "wishlist.html") {
+    if(link == "wishlist.html") {
         $('.row').html('');
         let wishlist = JSON.parse(localStorage.getItem('wishlist'));
         console.log();
@@ -101,7 +95,7 @@ $(function () {
         } else {
             $('<p>').text('No movies in watching.').appendTo('.container');
         }
-    } else {
+    } else if(/\d/.test(link)) {
         $.ajax({
             method: 'GET',
             url: API_BASE_URL + 'movie/' + getMovieID() + API_KEY
@@ -140,6 +134,11 @@ $(function () {
         $.ajax({
             method: 'GET',
             url: API_BASE_URL + 'movie/' + getMovieID() + '/similar' + API_KEY
+        }).done(index_media);
+    } else {
+        $.ajax({
+            method: 'GET',
+            url: API_POPULAR_URL
         }).done(index_media);
     }
 });
