@@ -1,9 +1,0 @@
-API Key (v3 auth)
-cfc9b47942cff33c2255f43dd9fb87f0
-
-API Read Access Token (v4 auth)
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZmM5YjQ3OTQyY2ZmMzNjMjI1NWY0M2RkOWZiODdmMCIsInN1YiI6IjVjMDZiMTA5MGUwYTI2MzNhNjBlNGI5MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.16QGIOb7_KLl-ca06yx1mnnGs1FAUz4kVyokjLzpYN8
-
-Example API Request
-https://api.themoviedb.org/3/movie/550?api_key=cfc9b47942cff33c2255f43dd9fb87f0
-https://api.themoviedb.org/3/search/movie?api_key=cfc9b47942cff33c2255f43dd9fb87f0&language=en-US&query=tron&page=1&include_adult=false
